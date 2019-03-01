@@ -44,6 +44,13 @@ class FileLoggingTree(externalCacheDir: File?) : Timber.DebugTree() {
             Log.e(LOG_TAG, "Error while logging into file : $e")
         }
 
+        when (priority) {
+            Log.VERBOSE -> Log.v(tag, message)
+            Log.DEBUG -> Log.d(tag, message)
+            Log.INFO -> Log.i(tag, message)
+            Log.WARN -> Log.w(tag, message)
+            Log.ERROR -> Log.e(tag, message)
+        }
         super.log(priority, tag, message, t)
     }
 
